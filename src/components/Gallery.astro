@@ -1,0 +1,66 @@
+---
+const gallery = await Astro.slots.render('default');
+const imgCount = gallery.match(/<\s*img/gs)?.length;
+---
+
+<div class="gallery flex flex-col justify-center items-center">
+    <main class="relative flex flex-row max-w-paragraph overflow-hidden rounded-xl">
+        <Fragment set:html={gallery} />
+    </main>
+    <footer class="flex flex-row mt-4 gap-4">
+        {
+            Array(imgCount).fill(0).map(_ => (
+                <div class="w-3 h-3 rounded-full bg-accent-lightest opacity-35 transition-opacity"></div>
+            ))
+        }
+    </footer>
+</div>
+
+<script>
+    function select(gallery: HTMLElement, index: number, longerTimeout: boolean) {
+        // wrap around
+        if (index >= gallery.querySelector('footer')!.children.length) {
+            index = 0;
+        }
+        if (index < 0) {
+            index = gallery.querySelector('footer')!.children.length - 1;
+        }
+
+        let i = 0;
+        for (const child of gallery.querySelector('footer')!.children) {
+            child.classList.toggle('selected', i === index);
+            i += 1;
+        }
+
+        gallery.querySelector('main')!.scroll({
+            left: (gallery.querySelector('main')!.children.item(index)! as HTMLElement).offsetLeft,
+            behavior: 'smooth'
+        });
+        gallery.setAttribute('data-current-index', index.toString());
+
+        clearTimeout(parseInt(gallery.getAttribute('timeout-id') ?? ''));
+        gallery.setAttribute(
+            'timeout-id',
+            setTimeout(() => select(gallery, index + 1, false), longerTimeout ? 5000 : 3500).toString()
+        );
+    }
+    document.querySelectorAll('.gallery').forEach(gallery => {
+        gallery.addEventListener('click', ((e: MouseEvent) => {
+            const rect = (e.target as HTMLElement).getBoundingClientRect();
+            if (e.clientX < rect.left + rect.width / 4) {
+                select(gallery as HTMLElement, parseInt(gallery.getAttribute('data-current-index')!) - 1, true);
+            }
+            else if (e.clientX > rect.right - rect.width / 4) {
+                select(gallery as HTMLElement, parseInt(gallery.getAttribute('data-current-index')!) + 1, true);
+            }
+        }) as (Event) => void);
+        select(gallery as HTMLElement, 0, false);
+    });
+
+</script>
+
+<style>
+    .selected {
+        @apply opacity-100;
+    }
+</style>

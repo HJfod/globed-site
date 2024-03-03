@@ -1,0 +1,36 @@
+---
+const { link, style } = Astro.props;
+---
+
+<a href={link} class={style}>
+    <slot name="pre-icon"><span></span></slot>
+    <slot />
+    <slot name="post-icon" />
+</a>
+
+<style>
+    a {
+        @apply
+            grid items-center justify-items-center
+            text-accent-lightest text-xl font-body
+            border-accent-lightest border-opacity-50 border-solid border-2 rounded-full
+            p-4 min-w-60
+            transition-colors;
+        
+        grid-template-columns: 1.75rem 1fr 1.75rem;
+    }
+    a:hover {
+        @apply
+            bg-tertiary-light
+            border-tertiary-light
+            text-tertiary-darkest
+            cursor-pointer;
+    }
+
+    .alt:hover {
+        @apply
+            bg-quardiary-light
+            border-quardiary-light
+            text-quardiary-darkest;
+    }
+</style>

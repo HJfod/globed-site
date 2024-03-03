@@ -1,0 +1,18 @@
+---
+import { Image } from 'astro:assets';
+import wallpaper from '../images/wallpaper.png';
+---
+
+<div class="fixed w-full h-full overflow-hidden -z-10">
+    <Image
+        src={wallpaper} alt="Background wallpaper"
+    />
+</div>
+
+<style>
+    img {
+        mask-image: linear-gradient(theme('colors.wallpaper.darkest'), 10%, transparent);
+        opacity: 50%;
+        filter: blur(0.75rem);
+    }
+</style>
