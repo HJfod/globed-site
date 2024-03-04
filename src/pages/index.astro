@@ -13,6 +13,7 @@ import Link from '../components/Link.astro';
 import Title from '../components/Title.astro';
 import Subtitle from '../components/Subtitle.astro';
 import ButtonRow from '../components/ButtonRow.astro';
+import Content from '../components/Content.astro';
 
 const screenshots = (await Astro.glob('../images/screenshot-*.png')).map(file => file.default);
 ---
@@ -55,7 +56,7 @@ const screenshots = (await Astro.glob('../images/screenshot-*.png')).map(file =>
 
     <Separator />
 
-    <main id="content" class="flex flex-col gap-20 sm:p-20 max-sm:p-6 max-sm:pt-20">
+    <Content>
         <Text>
             Globed is a <em>Multiplayer Mod</em> for Geometry Dash that lets you easily play 
             together with your friends across the world. Just install the mod via Geode, and 
@@ -71,7 +72,7 @@ const screenshots = (await Astro.glob('../images/screenshot-*.png')).map(file =>
         </Gallery>
 
         <Text>
-            Globed is availabe for <em>Geode</em>, the most popular third-party mod loader for 
+            Globed is available for <em>Geode</em>, the most popular third-party mod loader for 
             Geometry Dash. You can read more about Geode on <Link href="https://geode-sdk.org">its website</Link>!
         </Text>
 
@@ -91,8 +92,7 @@ const screenshots = (await Astro.glob('../images/screenshot-*.png')).map(file =>
                 </Button>
             </ButtonRow>
         </div>
-        </Text>
-    </main>
+    </Content>
 
     <Donate />
 

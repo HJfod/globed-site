@@ -11,11 +11,11 @@ import Link from '../components/Link.astro';
 import Title from '../components/Title.astro';
 import InstructionBox from '../components/InstructionBox.astro';
 import ButtonRow from '../components/ButtonRow.astro';
+import Content from '../components/Content.astro';
 ---
 
 <Page title="Install Globed">
-    <main class="p-20 mt-32 gap-8 text-xl flex flex-col items-center">
-
+    <Content>
         <Title>Install Globed</Title>
 
         <Text>
@@ -44,7 +44,7 @@ import ButtonRow from '../components/ButtonRow.astro';
             <Image
                 src={searchForGlobed}
                 alt="Image showing a person searching for 'Globed' on the Geode in-game Downloads page."
-                class="max-w-paragraph rounded-xl"
+                class="sm:max-w-paragraph max-sm:w-full rounded-xl"
             ></Image>
         </InstructionBox>
 
@@ -55,7 +55,7 @@ import ButtonRow from '../components/ButtonRow.astro';
             <Image
                 src={getARoomYouTwo}
                 alt="Image showing a person searching for 'Globed' on the Geode in-game Downloads page."
-                class="max-w-paragraph rounded-xl"
+                class="sm:max-w-paragraph max-sm:w-full rounded-xl"
             ></Image>
         </InstructionBox>
 
@@ -74,8 +74,7 @@ import ButtonRow from '../components/ButtonRow.astro';
                 </Button>
             </ButtonRow>
         </InstructionBox>
-
-    </main>
+    </Content>
     
     <Donate />
 </Page>

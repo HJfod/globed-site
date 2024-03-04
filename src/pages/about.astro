@@ -5,10 +5,11 @@ import InstructionBox from '../components/InstructionBox.astro';
 import Subtitle from '../components/Subtitle.astro';
 import Text from '../components/Text.astro';
 import Link from '../components/Link.astro';
+import Content from '../components/Content.astro';
 ---
 
 <Page title="About Globed">
-    <main class="sm:p-20 max-sm:p-6 mt-32 gap-8 text-xl flex flex-col items-center">
+    <Content>
         <Title>About Globed</Title>
 
         <Text>
@@ -54,6 +55,5 @@ import Link from '../components/Link.astro';
                 <Link href="https://discord.gg/d56q5Dkdm3">the Globed Discord server</Link>.
             </Text>
         </InstructionBox>
-
-    </main>
+    </Content>
 </Page>
