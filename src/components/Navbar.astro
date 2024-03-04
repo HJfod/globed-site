@@ -20,7 +20,7 @@ const base = import.meta.env.BASE_URL;
 ">
     <div class="grid sm:grid-cols-3 max-sm:grid-cols-2 justify-center items-center">
         <div class="flex flex-row justify-start items-center gap-3">
-            <a class="home-button">
+            <a class="home-button" href={base}>
                 <!-- <Image src={logo} alt="Globed logo" class="w-[24px] h-[24px]"/> -->
                 <GlobeIcon/>
                 <span class="font-head text-xl">Globed</span>
@@ -77,6 +77,7 @@ const base = import.meta.env.BASE_URL;
 <script define:vars={{ base }}>
     document.querySelectorAll('.home-button').forEach(btn => {
         btn.addEventListener('click', e => {
+            e.preventDefault();
             if (window.matchMedia("(max-width: 640px)").matches) {
                 document.querySelector('nav')?.classList.toggle('open');
             }
