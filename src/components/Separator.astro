@@ -8,6 +8,9 @@
     div {
         background: linear-gradient(to right, transparent, 25%, theme(colors.accent.lightest), 75%, transparent);
         height: .2em;
-        width: 50vw;
+
+        @apply
+            md:w-1/2
+            max-md:w-3/4;
     }
 </style>

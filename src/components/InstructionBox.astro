@@ -13,8 +13,8 @@ const classList = `flex flex-col ${align ?? 'items-center'} gap-8`;
 <style>
     article {
         @apply
-            flex flex-row items-center
-            gap-8 p-8
+            flex sm:flex-row max-sm:flex-col items-center
+            gap-8 sm:p-8 max-sm:p-4
             bg-wallpaper-default bg-opacity-25 
             rounded-xl;
     }

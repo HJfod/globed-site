@@ -10,6 +10,7 @@ import getARoomYouTwo from '../images/connect-to-server.png';
 import Link from '../components/Link.astro';
 import Title from '../components/Title.astro';
 import InstructionBox from '../components/InstructionBox.astro';
+import ButtonRow from '../components/ButtonRow.astro';
 ---
 
 <Page title="Install Globed">
@@ -62,7 +63,7 @@ import InstructionBox from '../components/InstructionBox.astro';
             <Text>
                 Need help using Globed? Hop in to our <em>Help</em> page, or <em>join our Discord</em>!
             </Text>
-            <div class="flex flex-row justify-center gap-8">
+            <ButtonRow>
                 <Button link="/about">
                     <BookIcon slot="pre-icon" />
                     Help
@@ -71,7 +72,7 @@ import InstructionBox from '../components/InstructionBox.astro';
                     <MessageCircleIcon slot="pre-icon" />
                     Discord
                 </Button>
-            </div>
+            </ButtonRow>
         </InstructionBox>
 
     </main>

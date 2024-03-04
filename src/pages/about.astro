@@ -7,8 +7,8 @@ import Text from '../components/Text.astro';
 import Link from '../components/Link.astro';
 ---
 
-<Page title="Install Globed">
-    <main class="p-20 mt-32 gap-8 text-xl flex flex-col items-center">
+<Page title="About Globed">
+    <main class="sm:p-20 max-sm:p-6 mt-32 gap-8 text-xl flex flex-col items-center">
         <Title>About Globed</Title>
 
         <Text>
@@ -23,7 +23,7 @@ import Link from '../components/Link.astro';
 
         <Title>FAQ</Title>
 
-        <InstructionBox num="?" align="items-start">
+        <InstructionBox num="?" align="sm:items-start max-sm:items-center">
             <Subtitle>Is Globed free?</Subtitle>
             <Text>
                 Yes, Globed is <em>100% free</em>. However, <Link href="https://ko-fi.com/globed">donations</Link> are much appreciated, as they 
@@ -31,7 +31,7 @@ import Link from '../components/Link.astro';
             </Text>
         </InstructionBox>
 
-        <InstructionBox num="?" align="items-start">
+        <InstructionBox num="?" align="sm:items-start max-sm:items-center">
             <Subtitle>Is this official?</Subtitle>
             <Text>
                 No, Globed is not an official part of Geometry Dash nor affiliated with RobTop Games. 
@@ -39,7 +39,7 @@ import Link from '../components/Link.astro';
             </Text>
         </InstructionBox>
 
-        <InstructionBox num="?" align="items-start" id="ios-info">
+        <InstructionBox num="?" align="sm:items-start max-sm:items-center" id="ios-info">
             <Subtitle>Can I get Globed on iOS?</Subtitle>
             <Text>
                 <em>Globed is not available on iOS</em>, as Geode can't support it. There are no plans 
@@ -47,7 +47,7 @@ import Link from '../components/Link.astro';
             </Text>
         </InstructionBox>
 
-        <InstructionBox num="?" align="items-start">
+        <InstructionBox num="?" align="sm:items-start max-sm:items-center">
             <Subtitle>The game crashes a lot!</Subtitle>
             <Text>
                 This can be due to Globed, or due to some other mod. Please report the bug on 

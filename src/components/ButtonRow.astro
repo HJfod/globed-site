@@ -1,0 +1,6 @@
+---
+const { reverseOnMobile } = Astro.props;
+const classList = `flex sm:flex-row ${reverseOnMobile === 'true' ? 'max-sm:flex-col-reverse' : 'max-sm:flex-col'} justify-center gap-8`;
+---
+
+<div class={classList}><slot/></div>

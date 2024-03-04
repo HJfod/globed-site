@@ -12,9 +12,11 @@ const { link, style } = Astro.props;
     a {
         @apply
             grid items-center justify-items-center
-            text-accent-lightest text-xl font-body
+            text-accent-lightest font-body
             border-accent-lightest border-opacity-50 border-solid border-2 rounded-full
-            p-4 min-w-60
+            sm:text-xl max-sm:text-lg
+            sm:p-4 max-sm:p-3
+            sm:min-w-60 max-sm:min-w-52
             transition-colors;
         
         grid-template-columns: 1.75rem 1fr 1.75rem;
