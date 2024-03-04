@@ -5,6 +5,8 @@ import logo from "../images/logo.png"
 import discord from "../images/discord.svg?raw"
 import github from "../images/github.svg?raw"
 import kofi from "../images/kofi.svg?raw"
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <div class="
@@ -20,15 +22,15 @@ import kofi from "../images/kofi.svg?raw"
         <p class="font-head text-xl text-accent-lightest">Globed</p>
     </div>
     <div class="flex flex-row justify-center max-sm:hidden">
-        <a href="/">
+        <a href={base}>
             <HomeIcon/>
             <span class="max-sm:hidden">Home</span>
         </a>
-        <a href="/install">
+        <a href={`${base}/install`}>
             <DownloadIcon/>
             <span class="max-sm:hidden">Install</span>
         </a>
-        <a href="/about">
+        <a href={`${base}/about`}>
             <BookIcon/>
             <span class="max-sm:hidden">About</span>
         </a>

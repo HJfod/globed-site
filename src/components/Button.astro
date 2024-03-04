@@ -1,8 +1,9 @@
 ---
 const { link, style } = Astro.props;
+const url = `${import.meta.env.BASE_URL}${link}`;
 ---
 
-<a href={link} class={style}>
+<a href={url} class={style}>
     <slot name="pre-icon"><span></span></slot>
     <slot />
     <slot name="post-icon" />
