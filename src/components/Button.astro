@@ -1,6 +1,7 @@
 ---
 const { link, style, solidWidth } = Astro.props;
-const url = link.startsWith('https') || link.startsWith('#') ? link : `${import.meta.env.BASE_URL}${link}`;
+const urlBase = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL.slice(0, -1) : import.meta.env.BASE_URL;
+const url = link.startsWith('https') || link.startsWith('#') ? link : `${urlBase}${link}`;
 const classList = `${style} ${Astro.slots.has('post-icon') ? 'has-post-icon' : ''} ${solidWidth === 'true' ? 'is-solid-width' : ''}`;
 ---
 
