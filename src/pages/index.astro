@@ -14,6 +14,7 @@ import Title from '../components/Title.astro';
 import Subtitle from '../components/Subtitle.astro';
 import ButtonRow from '../components/ButtonRow.astro';
 import Content from '../components/Content.astro';
+import PlayerStats from '../components/PlayerStats.astro';
 
 const screenshots = (await Astro.glob('../images/screenshot-*.png')).map(file => file.default);
 ---
@@ -93,6 +94,8 @@ const screenshots = (await Astro.glob('../images/screenshot-*.png')).map(file =>
             </ButtonRow>
         </div>
     </Content>
+
+    <!-- <PlayerStats/> -->
 
     <Donate />
 

@@ -1,0 +1,23 @@
+---
+
+---
+
+<canvas class="player-stats" width="500" height="300"></canvas>
+
+<script>
+    import { Chart } from 'chart.js/auto';
+
+    const data = await (await fetch(
+        'https://globed.dankmeme.dev/public/players?period=hour',
+        {
+            mode: 'no-cors'
+        }
+    )).json();
+    document.querySelectorAll('.player-stats').forEach(canvas => {
+        const chart = new Chart(canvas as HTMLCanvasElement, {
+            type: 'line',
+            data: data,
+        });
+    });
+
+</script>
