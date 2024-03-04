@@ -1,6 +1,6 @@
 ---
 const { link, style } = Astro.props;
-const url = `${import.meta.env.BASE_URL}${link}`;
+const url = link.startsWith('https') ? link : `${import.meta.env.BASE_URL}${link}`;
 ---
 
 <a href={url} class={style}>
