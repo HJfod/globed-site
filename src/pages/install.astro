@@ -1,17 +1,108 @@
 ---
 import Page from '../layouts/Default.astro';
-import Separator from '../components/Separator.astro';
+import Donate from '../components/Donate.astro';
+import Text from '../components/Text.astro';
+import Button from '../components/Button.astro';
+import { BookIcon, BoxIcon, MessageCircleIcon } from 'astro-feather';
+import { Image } from 'astro:assets';
+import searchForGlobed from '../images/search-for-globed.png';
+import getARoomYouTwo from '../images/connect-to-server.png';
+import Link from '../components/Link.astro';
 ---
 
 <Page title="Install Globed">
-    <main class="mb-20 mt-52 text-xl">
+    <main class="p-20 mt-32 gap-8 text-xl flex flex-col items-center">
 
-        <h1 class="text-accent-default font-head font-bold text-6xl mb-8 mix-blend-screen">Install Globed</h1>
-        <p class="text-accent-lightest font-body max-w-paragraph mb-20">
-            todo
-        </p>
+        <h1 class="text-accent-default font-head font-bold text-6xl mb-12 mix-blend-screen">Install Globed</h1>
+
+        <Text>
+            Follow these <em>3 steps</em> to install <em>Globed</em> for Geometry Dash.
+            <br><br>
+            Available on <em>Windows</em>, <em>Mac</em>, and <em>Android</em>!
+            <Link href="">(What about iOS?)</Link>
+        </Text>
+
+        <article>
+            <p>1</p>
+            <div class="flex flex-col items-center gap-8">
+                <Text>
+                    To install Globed, you first need to <em>install Geode</em>. 
+                    Click below to find instructions for installing it!
+                </Text>
+                <Button link="https://geode-sdk.org/install">
+                    <BoxIcon slot="pre-icon" />
+                    Install Geode
+                </Button>
+            </div>
+        </article>
+
+        <article>
+            <p>2</p>
+            <div class="flex flex-col items-center gap-8">
+                <Text>
+                    Navigate to the <em>Downloads page in Geode</em> and search for Globed, then click <em>View</em> 
+                    and <em>Install</em>!
+                </Text>
+                <Image
+                    src={searchForGlobed}
+                    alt="Image showing a person searching for 'Globed' on the Geode in-game Downloads page."
+                    class="max-w-paragraph rounded-xl"
+                ></Image>
+            </div>
+        </article>
+
+        <article>
+            <p>3</p>
+            <div class="flex flex-col items-center gap-8">
+                <Text>
+                    <em>Log in</em>, <em>Connect to a server</em>, <em>Join a room</em> and <em>Start playing</em>!
+                </Text>
+                <Image
+                    src={getARoomYouTwo}
+                    alt="Image showing a person searching for 'Globed' on the Geode in-game Downloads page."
+                    class="max-w-paragraph rounded-xl"
+                ></Image>
+            </div>
+        </article>
+
+        <article>
+            <p>??</p>
+            <div class="flex flex-col items-center gap-8">
+                <Text>
+                    Need help using Globed? Hop in to our <em>Help</em> page, or <em>join our Discord</em>!
+                </Text>
+                <div class="flex flex-row justify-center gap-8">
+                    <Button link="">
+                        <BookIcon slot="pre-icon" />
+                        Help
+                    </Button>
+                    <Button link="https://discord.gg/d56q5Dkdm3">
+                        <MessageCircleIcon slot="pre-icon" />
+                        Discord
+                    </Button>
+                </div>
+            </div>
+        </article>
 
     </main>
-
-    <Separator />
+    
+    <Donate />
 </Page>
+
+<style>
+    article {
+        @apply
+            flex flex-row items-center
+            gap-8 p-8
+            bg-wallpaper-default bg-opacity-25 
+            rounded-xl;
+    }
+
+    article > p {
+        @apply
+            flex justify-center items-center
+            text-wallpaper-darkest 
+            bg-wallpaper-lightest rounded-full w-16 h-16
+            font-bold font-head text-3xl;
+    }
+</style>
