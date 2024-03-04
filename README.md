@@ -1,7 +1,9 @@
 # Globed Website
 
-Work in progress
+Official website for the [Globed](https://github.com/dankmeme01/globed2) mod for Geometry Dash. Designed by me (HJfod) :)
 
-Made with Astro
+Made using Astro w/ Tailwind CSS
 
-Run dev environment via `npm i` then `npm run dev`
+## Developing
+
+Install the dev environment via `npm i` then run `npm run dev` to start a local copy of the site
