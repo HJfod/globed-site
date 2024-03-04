@@ -1,0 +1,59 @@
+---
+import Page from '../layouts/Default.astro';
+import Title from '../components/Title.astro';
+import InstructionBox from '../components/InstructionBox.astro';
+import Subtitle from '../components/Subtitle.astro';
+import Text from '../components/Text.astro';
+import Link from '../components/Link.astro';
+---
+
+<Page title="Install Globed">
+    <main class="p-20 mt-32 gap-8 text-xl flex flex-col items-center">
+        <Title>About Globed</Title>
+
+        <Text>
+            Globed is an <em>unofficial third-party modification</em> for Geometry Dash that adds <em>multiplayer</em> 
+            capabilities to the game, allowing you to see other players and play levels with them.
+        </Text>
+
+        <Text>
+            Globed has <em>built-in voice chat support</em> (along with <em>Promixity Chat</em>), 
+            which can be disabled from the Globed settings menu. 
+        </Text>
+
+        <Title>FAQ</Title>
+
+        <InstructionBox num="?" align="items-start">
+            <Subtitle>Is Globed free?</Subtitle>
+            <Text>
+                Yes, Globed is <em>100% free</em>. However, <Link href="https://ko-fi.com/globed">donations</Link> are much appreciated, as they 
+                allow us to continue development!
+            </Text>
+        </InstructionBox>
+
+        <InstructionBox num="?" align="items-start">
+            <Subtitle>Is this official?</Subtitle>
+            <Text>
+                No, Globed is not an official part of Geometry Dash nor affiliated with RobTop Games. 
+                The mod is fully fan-made by other passionate GD players.
+            </Text>
+        </InstructionBox>
+
+        <InstructionBox num="?" align="items-start" id="ios-info">
+            <Subtitle>Can I get Globed on iOS?</Subtitle>
+            <Text>
+                <em>Globed is not available on iOS</em>, as Geode can't support it. There are no plans 
+                to port the mod to iOS at this time.
+            </Text>
+        </InstructionBox>
+
+        <InstructionBox num="?" align="items-start">
+            <Subtitle>The game crashes a lot!</Subtitle>
+            <Text>
+                This can be due to Globed, or due to some other mod. Please report the bug on 
+                <Link href="https://discord.gg/d56q5Dkdm3">the Globed Discord server</Link>.
+            </Text>
+        </InstructionBox>
+
+    </main>
+</Page>

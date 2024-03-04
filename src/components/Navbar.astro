@@ -1,0 +1,70 @@
+---
+import { BookIcon, DownloadIcon, GithubIcon, HomeIcon } from "astro-feather";
+import { Image } from "astro:assets";
+import logo from "../images/logo.png"
+import discord from "../images/discord.svg?raw"
+import github from "../images/github.svg?raw"
+import kofi from "../images/kofi.svg?raw"
+---
+
+<div class="
+    fixed
+    grid grid-cols-3
+    justify-center items-center
+    w-full
+    bg-quardiary-darkest
+    border-b-2 border-b-accent-lightest
+">
+    <div class="flex flex-row justify-start items-center gap-3 ml-3">
+        <Image src={logo} alt="Globed logo" class="w-[24px] h-[24px]"/>
+        <p class="font-head text-xl text-accent-lightest">Globed</p>
+    </div>
+    <div class="flex flex-row justify-center">
+        <a href="/">
+            <HomeIcon/>
+            <span class="max-sm:hidden">Home</span>
+        </a>
+        <a href="/install">
+            <DownloadIcon/>
+            <span class="max-sm:hidden">Install</span>
+        </a>
+        <a href="/about">
+            <BookIcon/>
+            <span class="max-sm:hidden">About</span>
+        </a>
+    </div>
+    <div class="flex flex-row justify-end">
+        <a href="https://ko-fi.com/globed">
+            <div class="w-[24px]">
+                <Fragment set:html={kofi} />
+            </div>
+        </a>
+        <a href="https://discord.gg/d56q5Dkdm3">
+            <div class="w-[24px]">
+                <Fragment set:html={discord} />
+            </div>
+        </a>
+        <a href="https://github.com/dankmeme01/globed2">
+            <div class="w-[24px]">
+                <Fragment set:html={github} />
+            </div>
+        </a>
+    </div>
+</div>
+
+<style>
+    a {
+        @apply
+            p-3
+            flex flex-row gap-2
+            text-accent-lightest
+            fill-accent-lightest
+            transition-colors;
+    }
+    a:hover {
+        @apply
+            text-tertiary-lighter
+            fill-tertiary-lighter
+            cursor-pointer;
+    }
+</style>

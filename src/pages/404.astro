@@ -1,0 +1,19 @@
+---
+import Page from '../layouts/Default.astro';
+import Text from '../components/Text.astro';
+import Button from '../components/Button.astro';
+import { HomeIcon } from 'astro-feather';
+---
+
+<Page title="Install Globed">
+    <main class="p-20 mt-32 gap-8 text-xl flex flex-col items-center">
+        <h1 class="text-accent-default font-head font-bold text-6xl mb-12 mix-blend-screen">404 :(</h1>
+
+        <Text>Oops! That page doesn't exist :(</Text>
+
+        <Button link="/">
+            <HomeIcon slot="pre-icon" />
+            Return Home
+        </Button>
+    </main>
+</Page>

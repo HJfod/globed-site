@@ -1,0 +1,29 @@
+---
+const { num, align, id } = Astro.props;
+const classList = `flex flex-col ${align ?? 'items-center'} gap-8`;
+---
+
+<article id={id}>
+    <p>{num}</p>
+    <div class={classList}>
+        <slot/>
+    </div>
+</article>
+
+<style>
+    article {
+        @apply
+            flex flex-row items-center
+            gap-8 p-8
+            bg-wallpaper-default bg-opacity-25 
+            rounded-xl;
+    }
+
+    article > p {
+        @apply
+            flex justify-center items-center
+            text-wallpaper-darkest 
+            bg-wallpaper-lightest rounded-full w-16 h-16
+            font-bold font-head text-3xl;
+    }
+</style>
