@@ -96,6 +96,8 @@ export default {
         extend: {
             maxWidth: {
                 'paragraph': 'min(36rem, 90vw)',
+                // this is just to ensure that "Multiplayer Mod" is on one line in the main page
+                'subtitle':  'min(32rem, 90vw)',
             }
         },
     },

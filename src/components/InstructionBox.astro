@@ -1,6 +1,6 @@
 ---
 const { num, align, id } = Astro.props;
-const classList = `flex flex-col ${align ?? 'items-center'} gap-8`;
+const classList = `flex flex-col ${align ?? 'items-center'} sm:gap-8 max-sm:gap-4`;
 ---
 
 <article id={id}>
@@ -14,7 +14,8 @@ const classList = `flex flex-col ${align ?? 'items-center'} gap-8`;
     article {
         @apply
             flex sm:flex-row max-sm:flex-col items-center
-            gap-8 sm:p-8 max-sm:p-4
+            sm:gap-8 max-sm:gap-4
+            sm:p-8 max-sm:p-4
             bg-wallpaper-default bg-opacity-25 
             rounded-xl;
     }
