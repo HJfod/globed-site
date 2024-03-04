@@ -3,7 +3,7 @@ import Page from '../layouts/Default.astro';
 import Donate from '../components/Donate.astro';
 import Text from '../components/Text.astro';
 import Button from '../components/Button.astro';
-import { BookIcon, BoxIcon, MessageCircleIcon } from 'astro-feather';
+import { BookIcon, BoxIcon, MessageCircleIcon, HelpCircleIcon } from 'astro-feather';
 import { Image } from 'astro:assets';
 import searchForGlobed from '../images/search-for-globed-old.png';
 import getARoomYouTwo from '../images/connect-to-server.png';
@@ -30,10 +30,16 @@ import Content from '../components/Content.astro';
                 To install Globed, you first need to <em>install Geode</em>. 
                 Click below to find instructions for installing it!
             </Text>
-            <Button link="https://geode-sdk.org/install">
-                <BoxIcon slot="pre-icon" />
-                Install Geode
-            </Button>
+            <ButtonRow>
+                <Button link="https://geode-sdk.org/install">
+                    <BoxIcon slot="pre-icon" />
+                    Install Geode
+                </Button>
+                <Button link="https://geode-sdk.org">
+                    <HelpCircleIcon slot="pre-icon" />
+                    What's Geode?
+                </Button>
+            </ButtonRow>
         </InstructionBox>
 
         <InstructionBox num="2">

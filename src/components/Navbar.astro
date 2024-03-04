@@ -11,6 +11,7 @@ const urlBase = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_UR
 
 <nav class="
     fixed
+    main-navbar
     flex flex-col
     justify-stretch items-stretch
     w-full
@@ -61,7 +62,7 @@ const urlBase = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_UR
         btn.addEventListener('click', e => {
             if (window.matchMedia("(max-width: 640px)").matches) {
                 e.preventDefault();
-                document.querySelector('nav')?.classList.toggle('open');
+                document.querySelector('.main-navbar')?.classList.toggle('open');
             }
         });
     });
