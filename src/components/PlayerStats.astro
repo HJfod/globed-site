@@ -1,9 +1,14 @@
 ---
+import Subtitle from "./Subtitle.astro";
+
 
 ---
 
-<div class="bg-quardiary-darker p-8 rounded-xl max-w-paragraph">
-    <canvas class="player-stats"></canvas>
+<div class="flex flex-col items-center gap-4">
+    <Subtitle>Online Players</Subtitle>
+    <div class="bg-wallpaper-darkest bg-opacity-50 p-8 rounded-xl max-w-paragraph">
+        <canvas class="player-stats"></canvas>
+    </div>
 </div>
 
 <script>
@@ -17,14 +22,14 @@
         const chart = new Chart(canvas as HTMLCanvasElement, {
             type: 'line',
             data: {
-                labels: data.map(row => new Date(row.log_time).toDateString()),
+                labels: data.map(row => new Date(row.log_time * 1000).toLocaleTimeString()),
                 datasets: [
                     {
                         label: 'Players',
                         data: data.map(row => row.count),
                     }
                 ]
-            }
+            },
         });
     });
 </script>
