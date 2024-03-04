@@ -81,6 +81,7 @@ export default {
                 dark:     hsvToRgb(185, 1.00, 0.46),
                 darker:   hsvToRgb(198, 1.00, 0.34),
                 darkest:  hsvToRgb(198, 1.00, 0.12),
+                darkerAlt:hsvToRgb(128, 0.70, 0.34),
             },
             qvintiary: {
                 lightest: hsvToRgb(56,  0.30, 1.00),

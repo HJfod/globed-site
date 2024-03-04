@@ -1,0 +1,45 @@
+---
+const { href, style, noUnderline } = Astro.props;
+const classList = `${style} ${noUnderline === 'true' ? 'no-link-underline' : ''}`;
+---
+<!-- this is to prevent any unintended whitespace appearing after the link --><a href={href} class={classList}><slot/></a><style>
+    a {
+        @apply
+            text-tertiary-default
+            transition-colors
+            underline;
+    }
+    a:hover {
+        @apply
+            text-tertiary-lightest
+            underline;
+    }
+
+    a.no-link-underline {
+        @apply
+            no-underline;
+    }
+    a.no-link-underline:hover {
+        @apply
+            underline;
+    }
+
+    a.alt {
+        @apply
+            text-accent-dark;
+    }
+    a.alt:hover {
+        @apply
+            text-accent-light;
+    }
+
+    a.alt2 {
+        @apply
+            text-quardiary-lightest
+            underline;
+    }
+    a.alt2:hover {
+        @apply
+            text-tertiary-light;
+    }
+</style>

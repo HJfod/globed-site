@@ -1,0 +1,19 @@
+---
+import { DollarSignIcon } from "astro-feather"
+import Button from "./Button.astro"
+import Text from "./Text.astro"
+import Box from "./Box.astro"
+---
+
+<Box>
+    <Text>
+        Globed is supported by your <em>donations</em>. If you enjoy the mod, please consider 
+        donating on the <em>Ko-fi</em>!
+    </Text>
+    <div class="flex flex-row justify-center mt-8">
+        <Button link="https://ko-fi.com/globed">
+            <DollarSignIcon slot="pre-icon" />
+            Donate
+        </Button>
+    </div>
+</Box>

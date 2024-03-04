@@ -3,24 +3,29 @@ import Page from '../layouts/Default.astro';
 import Button from '../components/Button.astro';
 import Separator from '../components/Separator.astro';
 import Gallery from '../components/Gallery.astro';
-import { ArrowDownIcon, ArrowRightIcon, DollarSignIcon } from 'astro-feather';
+import { ArrowDownIcon, ArrowRightIcon, DownloadIcon } from 'astro-feather';
 import { Image } from 'astro:assets';
 
 import logo from '../images/logo.png'
+import Text from '../components/Text.astro';
+import Donate from '../components/Donate.astro';
+import Link from '../components/Link.astro';
 
 const screenshots = (await Astro.glob('../images/screenshot-*.png')).map(file => file.default);
 ---
 
 <Page title="Globed">
-    <header class="flex flex-col justify-center items-center sm:mt-20 max-sm:mt-10 sm:p-20 max-sm:p-6">
+    <header class="flex flex-col justify-center items-center sm:mt-20 max-sm:mt-10 sm:p-20 max-sm:p-6 mb-16">
         <Image src={logo} alt="Globed logo" class="w-48 mb-4"/>
 
         <h1 class="text-accent-default font-head font-bold text-8xl mb-8 mix-blend-screen">Globed</h1>
-        <h3 class="text-accent-lightest font-body font-bold text-2xl max-w-paragraph text-center">
-            An <a class="no-un" href="https://github.com/dankmeme01/globed2">Open-Source</a>, 
-            Highly Customizable <span class="font-bold">Multiplayer Mod</span> for 
-            <a class="no-un alt" href="https://www.robtopgames.com/">Geometry Dash</a>
-        </h3>
+        <Text size="text-2xl" center="true" font="font-head" bold="true">
+            An 
+            <Link noUnderline="true" href="https://github.com/dankmeme01/globed2">Open-Source</Link>, 
+            Highly Customizable <br>
+            <span class="font-bold">Multiplayer Mod</span> for 
+            <Link style="alt" noUnderline="true" href="https://www.robtopgames.com/">Geometry Dash</Link>
+        </Text>
 
         <div class="flex flex-row mt-16 gap-4">
             <Button link="#content">
@@ -37,12 +42,12 @@ const screenshots = (await Astro.glob('../images/screenshot-*.png')).map(file =>
 
     <Separator />
 
-    <div id="content" class="text-accent-lightest font-body text-xl">
-        <p id="first-paragraph" class="max-w-paragraph mb-20">
+    <div id="content" class="flex flex-col gap-20 p-20">
+        <Text>
             Globed is a <em>Multiplayer Mod</em> for Geometry Dash that lets you easily play 
             together with your friends across the world. Just install the mod via Geode, and 
             <em>hop on Globed</em>!
-        </p>
+        </Text>
 
         <Gallery>
             {
@@ -52,60 +57,24 @@ const screenshots = (await Astro.glob('../images/screenshot-*.png')).map(file =>
             }
         </Gallery>
 
-        <p class="max-w-paragraph mt-20">
+        <Text>
             Globed is availabe for <em>Geode</em>, the most popular third-party mod loader for 
-            Geometry Dash. You can read more about Geode on <a href="https://geode-sdk.org">its website</a>!
-        </p>
-    </div>
+            Geometry Dash. You can read more about Geode on <Link href="https://geode-sdk.org">its website</Link>!
+        </Text>
 
-    <div class="text-accent-lightest font-body mt-20 text-xl">
-        <p class="max-w-paragraph">
-            Globed is supported by your <em>donations</em>. If you enjoy the mod, please consider 
-            donating on the Ko-fi!
-        </p>
-        <div class="flex flex-row justify-center mt-8">
-            <Button link="https://ko-fi.com/globed">
-                <DollarSignIcon slot="pre-icon" />
-                Donate
-            </Button>
+        <div class="flex flex-col">
+            <Text>
+                Interested? Go to the <em>Installation Page</em> for instructions on how to get Globed!
+            </Text>
+            <div class="flex flex-row justify-center mt-8">
+                <Button link="./install">
+                    <DownloadIcon slot="pre-icon" />
+                    Install Globed
+                </Button>
+            </div>
         </div>
     </div>
 
+    <Donate />
+
 </Page>
-
-<style>
-    a {
-        @apply
-            text-tertiary-default
-            transition-colors
-            underline;
-    }
-    a.no-un {
-        @apply
-            no-underline;
-    }
-    a:hover {
-        @apply
-            text-tertiary-lightest
-            underline;
-    }
-
-    a.alt {
-        @apply
-            text-accent-dark;
-    }
-    a.alt:hover {
-        @apply
-            text-accent-light;
-    }
-
-    a.alt2 {
-        @apply
-            underline;
-        color: inherit;
-    }
-    a.alt2:hover {
-        @apply
-            text-accent-light;
-    }
-</style>

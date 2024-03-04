@@ -1,0 +1,21 @@
+---
+const { color, size, font, center, bold } = Astro.props;
+const classList = `
+    max-w-paragraph
+    ${color ?? 'text-accent-lightest'}
+    ${font ?? 'font-body'}
+    ${size ?? 'text-xl'}
+    ${center === 'true' ? 'text-center' : ''}
+    ${bold === 'true' ? 'font-bold' : ''}
+`
+---
+
+<p class={classList}><slot/></p>
+
+<style is:global>
+    em {
+        @apply
+            not-italic
+            text-qvintiary-default;
+    }
+</style>
