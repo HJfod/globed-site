@@ -1,11 +1,11 @@
 ---
-const { link, style } = Astro.props;
+const { link, style, solidWidth } = Astro.props;
 const url = link.startsWith('https') || link.startsWith('#') ? link : `${import.meta.env.BASE_URL}${link}`;
-const classList = `${style} ${Astro.slots.has('post-icon') ? 'has-post-icon' : ''}`;
+const classList = `${style} ${Astro.slots.has('post-icon') ? 'has-post-icon' : ''} ${solidWidth === 'true' ? 'is-solid-width' : ''}`;
 ---
 
 <a href={url} class={classList}>
-    <slot name="pre-icon"></slot>
+    <slot name="pre-icon">{solidWidth === 'true' ? <span></span> : ''}</slot>
     <span class="content"><slot /></span>
     <slot name="post-icon" />
 </a>
@@ -29,6 +29,9 @@ const classList = `${style} ${Astro.slots.has('post-icon') ? 'has-post-icon' : '
     }
     a.has-post-icon {
         grid-template-columns: 1fr 1.75rem;
+    }
+    a.is-solid-width {
+        grid-template-columns: 1.75rem 7rem 1.75rem;
     }
     a:hover {
         @apply
