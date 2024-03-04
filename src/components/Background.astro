@@ -6,8 +6,19 @@ import wallpaper from '../images/wallpaper.png';
 <div class="fixed w-full h-full overflow-hidden -z-10">
     <Image
         src={wallpaper} alt="Background wallpaper"
+        class="parallax"
     />
 </div>
+
+<script>
+    function update() {
+        document.querySelectorAll('.parallax').forEach(p => {
+            (p as HTMLElement).style.objectPosition = `0px -${window.scrollY * 0.1}px`;
+        });
+    }
+    document.addEventListener('scroll', () => update());
+    update();
+</script>
 
 <style>
     img {
