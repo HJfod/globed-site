@@ -1,16 +1,29 @@
 ---
+import { ArrowLeftIcon, ArrowRightIcon } from "astro-feather";
+
 const gallery = await Astro.slots.render('default');
 const imgCount = gallery.match(/<\s*img/gs)?.length;
 ---
 
 <div class="gallery flex flex-col justify-center items-center">
-    <main class="relative flex flex-row max-w-paragraph overflow-hidden rounded-xl">
-        <Fragment set:html={gallery} />
+    <main class="grid grid-cols-1 justify-stretch items-stretch max-w-paragraph overflow-hidden rounded-xl">
+        <div class="relative flex flex-row max-w-paragraph overflow-hidden">
+            <Fragment set:html={gallery} />
+        </div>
+        <nav class="
+            flex flex-row
+            relative
+            justify-between items-stretch
+            opacity-0 transition-opacity
+        ">
+            <div><ArrowLeftIcon/></div>
+            <div><ArrowRightIcon/></div>
+        </nav>
     </main>
     <footer class="flex flex-row mt-4 gap-4">
         {
-            Array(imgCount).fill(0).map(_ => (
-                <div class="w-3 h-3 rounded-full bg-accent-lightest opacity-35 transition-opacity"></div>
+            Array(imgCount).fill(0).map((_, ix) => (
+                <button class="w-3 h-3 rounded-full bg-accent-lightest opacity-35 transition-opacity" data-index={ix}></button>
             ))
         }
     </footer>
@@ -32,8 +45,8 @@ const imgCount = gallery.match(/<\s*img/gs)?.length;
             i += 1;
         }
 
-        gallery.querySelector('main')!.scroll({
-            left: (gallery.querySelector('main')!.children.item(index)! as HTMLElement).offsetLeft,
+        gallery.querySelector('main > div')!.scroll({
+            left: (gallery.querySelector('main > div')!.children.item(index)! as HTMLElement).offsetLeft,
             behavior: 'smooth'
         });
         gallery.setAttribute('data-current-index', index.toString());
@@ -44,22 +57,82 @@ const imgCount = gallery.match(/<\s*img/gs)?.length;
             setTimeout(() => select(gallery, index + 1, false), longerTimeout ? 5000 : 3500).toString()
         );
     }
-    document.querySelectorAll('.gallery').forEach(gallery => {
-        gallery.addEventListener('click', ((e: MouseEvent) => {
-            const rect = (e.target as HTMLElement).getBoundingClientRect();
-            if (e.clientX < rect.left + rect.width / 4) {
-                select(gallery as HTMLElement, parseInt(gallery.getAttribute('data-current-index')!) - 1, true);
+    document.querySelectorAll('.gallery').forEach(elem => {
+        const gallery = elem as HTMLElement;
+
+        const rect = gallery.getBoundingClientRect();
+        const hitZone = rect.width / 6;
+
+        // Navigating by swiping / clicking on the sides
+        gallery.querySelector('main')!.addEventListener('mousedown', e => {
+            const touchPos = e.clientX;
+    
+            // Remove any existing touch-start attribute
+            gallery.removeAttribute('touch-start');
+
+            // Swipe if the touch wasn't within the side click area
+            if (touchPos > rect.left + hitZone && touchPos < rect.right - hitZone) {
+                gallery.setAttribute('touch-start', touchPos.toString());
             }
-            else if (e.clientX > rect.right - rect.width / 4) {
-                select(gallery as HTMLElement, parseInt(gallery.getAttribute('data-current-index')!) + 1, true);
+            else {
+                const currentIndex = parseInt(gallery.getAttribute('data-current-index')!);
+                if (touchPos <= rect.left + hitZone) {
+                    select(gallery, currentIndex - 1, true);
+                }
+                else if (touchPos >= rect.right - hitZone) {
+                    select(gallery, currentIndex + 1, true);
+                }
             }
-        }) as (Event) => void);
-        select(gallery as HTMLElement, 0, false);
+        });
+        gallery.querySelector('main')!.addEventListener('mousemove', e => {
+            const start = gallery.getAttribute('touch-start');
+            if (start) {
+                const startPos = parseInt(start);
+                const touchPos = e.clientX;
+
+                // Make sure the swipe is long enough
+                if (Math.abs(touchPos - startPos) > 60) {
+                    const currentIndex = parseInt(gallery.getAttribute('data-current-index')!);
+                    select(gallery, currentIndex + (touchPos > startPos ? -1 : 1), true);
+
+                    // Don't trigger multiple times
+                    gallery.removeAttribute('touch-start');
+                }
+            }
+        });
+
+        // Navigating by clicking on the dots
+        gallery.querySelectorAll('footer > button').forEach(btn => {
+            btn.addEventListener('click', e => {
+                const index = (e.target as HTMLElement).getAttribute('data-index')!;
+                select(gallery, parseInt(index), true);
+            });
+        });
+
+        select(gallery, 0, false);
     });
 
 </script>
 
 <style>
+    .gallery > main > nav, .gallery > main > div {
+        grid-row: 1;
+        grid-column: 1;
+    }
+
+    .gallery > main:hover > nav {
+        opacity: 100%;
+    }
+
+    .gallery > main > nav > div {
+        @apply
+            text-accent-lightest
+            bg-wallpaper-darkest bg-opacity-75
+            w-1/6 h-full
+            flex justify-center items-center
+            pointer-events-none;
+    }
+
     .selected {
         @apply opacity-100;
     }
