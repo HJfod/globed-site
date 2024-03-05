@@ -66,6 +66,11 @@ const imgCount = gallery.match(/<\s*img/gs)?.length;
         // Navigating by swiping / clicking on the sides
         gallery.querySelector('main')!.addEventListener('mousedown', e => {
             const touchPos = e.clientX;
+
+            // Make sure it's left click lol
+            if (e.button != 0) {
+                return;
+            }
     
             // Remove any existing touch-start attribute
             gallery.removeAttribute('touch-start');
@@ -85,6 +90,10 @@ const imgCount = gallery.match(/<\s*img/gs)?.length;
             }
         });
         gallery.querySelector('main')!.addEventListener('mousemove', e => {
+            // Make sure it's left click lol
+            if (e.button != 0) {
+                return;
+            }
             const start = gallery.getAttribute('touch-start');
             if (start) {
                 const startPos = parseInt(start);
