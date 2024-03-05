@@ -7,7 +7,7 @@ const imgCount = gallery.match(/<\s*img/gs)?.length;
 
 <div class="gallery flex flex-col justify-center items-center">
     <main class="grid grid-cols-1 justify-stretch items-stretch max-w-paragraph overflow-hidden rounded-xl">
-        <div class="relative flex flex-row max-w-paragraph overflow-hidden">
+        <div class="relative flex flex-row max-w-paragraph overflow-hidden select-none">
             <Fragment set:html={gallery} />
         </div>
         <nav class="
@@ -57,57 +57,59 @@ const imgCount = gallery.match(/<\s*img/gs)?.length;
             setTimeout(() => select(gallery, index + 1, false), longerTimeout ? 5000 : 3500).toString()
         );
     }
-    document.querySelectorAll('.gallery').forEach(elem => {
-        const gallery = elem as HTMLElement;
-
+    function handleSwipeStartOrClick(gallery: HTMLElement, touchPos: number, click: boolean) {
         const rect = gallery.getBoundingClientRect();
         const hitZone = rect.width / 6;
 
-        // Navigating by swiping / clicking on the sides
-        gallery.querySelector('main')!.addEventListener('mousedown', e => {
-            const touchPos = e.clientX;
+        // Remove any existing touch-start attribute
+        gallery.removeAttribute('touch-start');
 
-            // Make sure it's left click lol
-            if (e.button != 0) {
-                return;
+        // Swipe if the touch wasn't within the side click area
+        if (click) {
+            const currentIndex = parseInt(gallery.getAttribute('data-current-index')!);
+            if (touchPos <= rect.left + hitZone) {
+                select(gallery, currentIndex - 1, true);
             }
-    
-            // Remove any existing touch-start attribute
-            gallery.removeAttribute('touch-start');
-
-            // Swipe if the touch wasn't within the side click area
+            else if (touchPos >= rect.right - hitZone) {
+                select(gallery, currentIndex + 1, true);
+            }
+        }
+        else {
             if (touchPos > rect.left + hitZone && touchPos < rect.right - hitZone) {
                 gallery.setAttribute('touch-start', touchPos.toString());
             }
-            else {
+        }
+    }
+    function handleSwipeMove(gallery: HTMLElement, touchPos: number) {
+        const start = gallery.getAttribute('touch-start');
+        if (start) {
+            const startPos = parseInt(start);
+            const rect = gallery.getBoundingClientRect();
+
+            // Make sure the swipe is long enough
+            if (Math.abs(touchPos - startPos) > rect.width / 6) {
                 const currentIndex = parseInt(gallery.getAttribute('data-current-index')!);
-                if (touchPos <= rect.left + hitZone) {
-                    select(gallery, currentIndex - 1, true);
-                }
-                else if (touchPos >= rect.right - hitZone) {
-                    select(gallery, currentIndex + 1, true);
-                }
+                select(gallery, currentIndex + (touchPos > startPos ? -1 : 1), true);
+
+                // Don't trigger multiple times
+                gallery.removeAttribute('touch-start');
             }
+        }
+    }
+    document.querySelectorAll('.gallery').forEach(elem => {
+        const gallery = elem as HTMLElement;
+
+        // Navigating by clicking on the sides
+        gallery.querySelector('main')!.addEventListener('click', e => {
+            handleSwipeStartOrClick(gallery, e.clientX, true);
         });
-        gallery.querySelector('main')!.addEventListener('mousemove', e => {
-            // Make sure it's left click lol
-            if (e.button != 0) {
-                return;
-            }
-            const start = gallery.getAttribute('touch-start');
-            if (start) {
-                const startPos = parseInt(start);
-                const touchPos = e.clientX;
 
-                // Make sure the swipe is long enough
-                if (Math.abs(touchPos - startPos) > 60) {
-                    const currentIndex = parseInt(gallery.getAttribute('data-current-index')!);
-                    select(gallery, currentIndex + (touchPos > startPos ? -1 : 1), true);
-
-                    // Don't trigger multiple times
-                    gallery.removeAttribute('touch-start');
-                }
-            }
+        // Navigating by swiping
+        gallery.querySelector('main')!.addEventListener('touchstart', e => {
+            handleSwipeStartOrClick(gallery, e.touches[0].clientX, false);
+        });
+        gallery.querySelector('main')!.addEventListener('touchmove', e => {
+            handleSwipeMove(gallery, e.touches[0].clientX);
         });
 
         // Navigating by clicking on the dots
@@ -128,18 +130,27 @@ const imgCount = gallery.match(/<\s*img/gs)?.length;
         grid-row: 1;
         grid-column: 1;
     }
-
+    .gallery > main > div > * {
+        user-select: none;
+    }
     .gallery > main:hover > nav {
         opacity: 100%;
     }
-
+    .gallery > main:active > nav {
+        opacity: 100%;
+    }
+    .gallery > main > nav {
+        @apply
+            select-none;
+    }
     .gallery > main > nav > div {
         @apply
             text-accent-lightest
             bg-wallpaper-darkest bg-opacity-75
             w-1/6 h-full
             flex justify-center items-center
-            pointer-events-none;
+            pointer-events-none
+            select-none;
     }
 
     .selected {
