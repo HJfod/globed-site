@@ -1,0 +1,58 @@
+---
+import Page from '../layouts/Default.astro';
+import Title from '../components/Title.astro';
+import InstructionBox from '../components/InstructionBox.astro';
+import Subtitle from '../components/Subtitle.astro';
+import Text from '../components/Text.astro';
+import Link from '../components/Link.astro';
+import Content from '../components/Content.astro';
+---
+
+<Page title="Globed FAQ" description="The FAQ for Globed - an open-source, highly customizable multiplayer mod for Geometry Dash.">
+    <Content>
+        <Title>Globed FAQ</Title>
+
+        <Text>
+            Frequently Asked Questions about Globed
+        </Text>
+
+        <InstructionBox num="?" align="sm:items-start max-sm:items-center">
+            <Subtitle>Is Globed free?</Subtitle>
+            <Text>
+                Yes, Globed is <em>100% free</em>. However, <Link href="https://ko-fi.com/globed">donations</Link> are much appreciated, as they
+                allow us to continue development!
+            </Text>
+        </InstructionBox>
+
+        <InstructionBox num="?" align="sm:items-start max-sm:items-center">
+            <Subtitle>Is this official?</Subtitle>
+            <Text>
+                No, Globed is not an official part of Geometry Dash nor affiliated with RobTop Games.
+                The mod is fully fan-made by other passionate GD players.
+            </Text>
+        </InstructionBox>
+
+        <InstructionBox num="?" align="sm:items-start max-sm:items-center" id="ios-info">
+            <Subtitle>Can I get Globed on iOS?</Subtitle>
+            <Text>
+                <em>Globed is not available on iOS</em>, as Geode can't support it. There are no plans
+                to port the mod to iOS at this time.
+            </Text>
+        </InstructionBox>
+
+        <InstructionBox num="?" align="sm:items-start max-sm:items-center">
+            <Subtitle>The game crashes a lot!</Subtitle>
+            <Text>
+                This can be due to Globed, or due to some other mod. Please report the bug on
+                <Link href="https://discord.gg/d56q5Dkdm3">the Globed Discord server</Link>.
+            </Text>
+        </InstructionBox>
+
+        <!-- thanks fod for the scuffed way of doing padding -->
+        <div class="h-8" />
+
+        <Title>
+            Common Globed Errors
+        </Title>
+    </Content>
+</Page>

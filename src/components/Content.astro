@@ -1,10 +1,10 @@
 ---
-
+const {gapSize = 8, padding = 20} = Astro.props;
 ---
 
-<main id="content" class="
+<main id="content" class=`
     flex flex-col 
     items-center
-    gap-8
-    sm:p-20 max-sm:p-6 max-sm:pt-20
-"><slot/></main>
+    gap-${gapSize}
+    sm:p-${padding} max-sm:p-6 max-sm:pt-20
+`><slot/></main>
