@@ -10,10 +10,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/tailwind": "^5.1.0",
+    "@astrojs/tailwind": "^5.1.4",
     "astro": "^4.4.9",
     "astro-feather": "^1.0.0",
-    "chart.js": "^4.4.2",
-    "tailwindcss": "^3.4.1"
+    "chart.js": "^4.4.7",
+    "tailwindcss": "^3.4.17"
   }
 }
