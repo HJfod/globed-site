@@ -14,7 +14,7 @@ import Subtitle from "./Subtitle.astro";
 <script>
     import { Chart } from 'chart.js/auto';
 
-    const data = (await (await fetch('https://globed.dankmeme.dev/public/players?period=hour')).json()).data as [{
+    const data = (await (await fetch('https://main.globed.dev/public/players?period=hour')).json()).data as [{
         log_time: number,
         count: number,
     }];
@@ -31,5 +31,6 @@ import Subtitle from "./Subtitle.astro";
                 ]
             },
         });
+        chart.resize(1000, 1000);
     });
 </script>

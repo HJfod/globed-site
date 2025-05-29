@@ -1,0 +1,62 @@
+---
+import Page from '../layouts/Default.astro';
+import Title from '../components/Title.astro';
+import InstructionBox from '../components/InstructionBox.astro';
+import Subtitle from '../components/Subtitle.astro';
+import Text from '../components/Text.astro';
+import Link from '../components/Link.astro';
+import Content from '../components/Content.astro';
+---
+
+<Page title="Globed FAQ" description="The FAQ for Globed - an open-source, highly customizable multiplayer mod for Geometry Dash.">
+    <Content>
+        <Title>Globed FAQ</Title>
+
+        <Text>
+            Frequently Asked Questions about Globed
+        </Text>
+
+        <div class="h-8" />
+
+        <InstructionBox num="?" align="sm:items-start max-sm:items-center">
+            <Subtitle>Is Globed free?</Subtitle>
+            <Text>
+                Yes, Globed is <em>100% free</em>, and it will remain free <em>forever</em>. However, <Link href="https://ko-fi.com/globed">donations</Link> are much appreciated, as they
+                allow us to continue development!
+            </Text>
+        </InstructionBox>
+
+        <InstructionBox num="?" align="sm:items-start max-sm:items-center">
+            <Subtitle>Is this official?</Subtitle>
+            <Text>
+                No, Globed is not an official part of Geometry Dash nor affiliated with RobTop Games.
+                The mod is fully <em>fan-made</em> by other passionate GD players.
+            </Text>
+        </InstructionBox>
+
+        <InstructionBox num="?" align="sm:items-start max-sm:items-center">
+            <Subtitle>I have a suggestion, a bug, or a crash report</Subtitle>
+            <Text>
+                Feel free to make an issue or a discussion on our <Link href="https://github.com/GlobedGD/globed2">GitHub page</Link>.
+                If it is a crash report, <em>please include the crashlog file</em>. For more lively support, you can also join
+                <Link href="https://discord.gg/d56q5Dkdm3">the Globed Discord server</Link> and ask for help there.
+            </Text>
+        </InstructionBox>
+
+        <InstructionBox num="?" align="sm:items-start max-sm:items-center">
+            <Subtitle>I cannot connect to the server!</Subtitle>
+            <Text>
+                This can happen for many reasons. First of all, check if the server is up by visiting <Link href="https://status.globed.dev/">our status page</Link>.
+                If the server is up and you are still having troubles, please join our <Link href="https://discord.gg/d56q5Dkdm3">Discord server</Link> and ask for help.
+            </Text>
+        </InstructionBox>
+
+        <InstructionBox num="?" align="sm:items-start max-sm:items-center">
+            <Subtitle>I got banned! How can I appeal this?</Subtitle>
+            <Text>
+                All appeals are handled in our <Link href="https://discord.gg/d56q5Dkdm3">Discord server</Link>, please join it and make a ticket.
+            </Text>
+        </InstructionBox>
+
+    </Content>
+</Page>

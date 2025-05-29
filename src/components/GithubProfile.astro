@@ -1,0 +1,17 @@
+---
+const {profileLink, displayName, titleText} = Astro.props;
+
+import Text from "./Text.astro"
+import Link from "./Link.astro";
+import Content from "./Content.astro";
+---
+
+<Content gapSize=4 padding=8>
+    <img src={profileLink + ".png"} class="rounded-full w-24 h-24">
+    <a href={profileLink} class="hover:underline text-accent-lightest font-body sm:text-xl max-sm:text-base">
+        {displayName}
+    </a>
+    <Text>
+        {titleText}
+    </Text>
+</Content>
