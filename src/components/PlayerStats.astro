@@ -14,15 +14,15 @@ import Subtitle from "./Subtitle.astro";
 <script>
     import { Chart } from 'chart.js/auto';
 
-    const data = (await (await fetch('https://main.globed.dev/public/players?period=hour')).json()).data as [{
-        log_time: number,
+    const data = (await (await fetch('http://main-api.globed.dev/players?period=hour')).json()) as [{
+        timestamp: number,
         count: number,
     }];
     document.querySelectorAll('.player-stats').forEach(canvas => {
         const chart = new Chart(canvas as HTMLCanvasElement, {
             type: 'line',
             data: {
-                labels: data.map(row => new Date(row.log_time * 1000).toLocaleTimeString()),
+                labels: data.map(row => new Date(row.timestamp * 1000).toLocaleTimeString()),
                 datasets: [
                     {
                         label: 'Players',
