@@ -14,7 +14,7 @@ import Subtitle from "./Subtitle.astro";
 <script>
     import { Chart } from 'chart.js/auto';
 
-    const data = (await (await fetch('http://main-api.globed.dev/players?period=hour')).json()) as [{
+    const data = (await (await fetch('https://main-api.globed.dev/players?period=hour')).json()) as [{
         timestamp: number,
         count: number,
     }];
