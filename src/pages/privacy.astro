@@ -1,0 +1,50 @@
+---
+import Page from '../layouts/Default.astro';
+import Title from '../components/Title.astro';
+import Text from '../components/Text.astro';
+import Subtitle from '../components/Subtitle.astro';
+import Content from '../components/Content.astro';
+---
+
+<Page title="Privacy Policy" description="Privacy Policy for Globed - an open-source, highly customizable multiplayer mod for Geometry Dash.">
+    <Content>
+        <Title>Privacy Policy</Title>
+
+        <Text>
+            Last updated: 2026-06-12
+        </Text>
+
+        <div class="h-8" />
+
+        <Subtitle>Data We Collect</Subtitle>
+
+        <Text>
+            We temporarily store server logs to keep <span class="text-qvintiary-default font-bold">Globed</span> running properly.
+            These logs may include your <span class="text-accent-default">account ID</span>, <span class="text-accent-default">username</span>,
+            <span class="text-accent-default">platform</span>, <span class="text-accent-default">IP address</span>,
+            <span class="text-accent-default">connection type</span>, the <span class="text-accent-default">levels or rooms</span>
+            you join, and other in-game behavior. All logs are used strictly for
+            <span class="text-tertiary-default">debugging</span> and <span class="text-tertiary-default">statistical purposes</span>,
+            and are never kept for more than 30 days.
+        </Text>
+
+        <div class="h-6" />
+
+        <Text>
+            We may also keep some anonymous data for statistics, such as which levels are played most often.
+            This data cannot be used to identify you. No data is ever shared with third parties.
+        </Text>
+
+        <div class="h-8" />
+
+        <Subtitle>Discord Integration</Subtitle>
+
+        <Text>
+            We also permanently store certain data when you link your
+            <span class="text-quardiary-default font-bold">Discord</span> account, specifically your
+            <span class="text-quardiary-default font-bold">Discord</span> ID and username.
+            You can unlink your Discord account in-game, or by emailing
+            <span class="text-accent-default">help@globed.dev</span>.
+        </Text>
+    </Content>
+</Page>
